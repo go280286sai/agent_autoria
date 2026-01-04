@@ -1,11 +1,10 @@
 import os
 import threading
-import logging
 from typing import Dict, Any
 import bentoml
 from scrapy.crawler import CrawlerProcess
 from dotenv import load_dotenv
-from fastapi.responses import FileResponse  # для отдачи PDF
+from fastapi.responses import FileResponse
 from src.agent_orchestrator import AgentOrchestrator
 from src.agent_scrapy.autoria_scrapy import AppAutoriaSpider
 from src.logging_config import setup_logging
