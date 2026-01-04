@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ["3.11"]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
@@ -19,8 +19,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Analysing the code with pylint
+    - name: Lint with pylint and flake8
       run: |
         pylint $(git ls-files '*.py')
-        flake $(git ls-files '*.py')
-        pytest
+        flake8 $(git ls-files '*.py')
+
+    - name: Run tests
+      run: pytest
+
