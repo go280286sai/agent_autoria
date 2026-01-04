@@ -1,3 +1,7 @@
+"""
+Start service bentoml
+Author: Cod3W1ld01@proton.me
+"""
 import os
 import threading
 from typing import Dict, Any
@@ -22,6 +26,10 @@ class ScrapingAgentService:
 
     @bentoml.api
     def create_scrapy(self) -> dict:
+        """
+        Scrapy API
+        :return:
+        """
         process = CrawlerProcess(settings={
             "FEEDS": {
                 "data/in/results.json": {"format": "json"},
@@ -32,55 +40,121 @@ class ScrapingAgentService:
         return {"status": True}
 
     @bentoml.api
-    def generate_report_group_models_city(self, name: str, city: str) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_models_city, args=(name, city))
+    def generate_report_group_models_city(self,
+                                          name: str,
+                                          city: str
+                                          ) -> Dict[str, Any]:
+        """
+        Generate report groups models for city
+        :param name:
+        :param city:
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_models_city,
+            args=(name, city)
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def generate_report_group_models_name(self, name: str) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_models_name, args=(name,))
+        """
+        Generate report groups models for name
+        :param name:
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_models_name,
+            args=(name,)
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def generate_report_group_year(self, year: int) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_year, args=(year,))
+        """
+        Generate report groups models for year
+        :param year:
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_year,
+            args=(year,)
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def generate_report_group_names(self) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_names, args=())
+        """
+        Generate report groups models for name
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_names,
+            args=()
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def generate_report_group_years(self) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_years, args=())
+        """
+        Generate report groups models for name
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_years,
+            args=()
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def generate_report_group_types(self) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_types, args=())
+        """
+        Generate report groups models for type
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_types,
+            args=()
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def generate_report_predict(self) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_predict, args=())
+        """
+        Generate report predict
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_predict,
+            args=()
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def generate_report_group_switch(self) -> Dict[str, Any]:
-        thread = threading.Thread(target=self.orchestrator.agent_get_group_switch)
+        """
+        Generate report groups models for switch
+        :return:
+        """
+        thread = threading.Thread(
+            target=self.orchestrator.agent_get_group_switch
+        )
         thread.start()
         return {"report": "processing"}
 
     @bentoml.api
     def list_reports(self) -> Dict[str, Any]:
+        """
+        List reports
+        :return:
+        """
         arr = os.listdir("data/out")
         # формируем ссылки на PDF
         links = [f"/files/{fname}" for fname in arr if fname.endswith(".pdf")]
@@ -89,6 +163,11 @@ class ScrapingAgentService:
     # 🔥 Добавляем API для отдачи PDF по ссылке
     @bentoml.api(route="/files/{filename}")
     def get_report_file(self, filename: str):
+        """
+        Get report file
+        :param filename:
+        :return:
+        """
         file_path = os.path.join("data/out", filename)
         if os.path.exists(file_path):
             return FileResponse(file_path, media_type="application/pdf")
