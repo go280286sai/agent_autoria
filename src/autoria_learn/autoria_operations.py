@@ -41,7 +41,7 @@ class AutoriaOperations(AutoriaMain):
                 autopct='%1.1f%%'
             )
             plt.title(
-                label="Процентное содержание популярных машин, %",
+                label="Percentage of popular cars, %",
                 fontweight='bold', fontsize='24'
             )
             plt.legend(names_sorted.index)
@@ -90,7 +90,7 @@ class AutoriaOperations(AutoriaMain):
                 textprops={'fontsize': 16}
             )
             plt.title(
-                label=f"Процентное содержание моделей {name} машин, %",
+                label=f"Percentage of popular cars {name}, %",
                 fontweight='bold', fontsize=24
             )
             plt.legend(models_sort.index)
@@ -156,7 +156,7 @@ class AutoriaOperations(AutoriaMain):
                 textprops={'fontsize': 16}
             )
             plt.title(
-                label=f"Процентное содержание моделей {name} в городе {city}",
+                label=f"Percentage of popular cars {name} in the city {city}",
                 fontweight='bold',
                 fontsize=24
             )
@@ -250,7 +250,7 @@ class AutoriaOperations(AutoriaMain):
                 labels=models_sort['name']
             )
             plt.title(
-                label=f"Процентное содержание моделей {year} года, %",
+                label=f"Percentage of popular cars {year} year, %",
                 fontweight='bold',
                 fontsize=24
             )
@@ -305,7 +305,7 @@ class AutoriaOperations(AutoriaMain):
                 textprops={'fontsize': 16}
             )
             plt.title(
-                label="Процентное содержание моделей, %",
+                label="Percentage of popular cars, %",
                 fontweight='bold',
                 fontsize=24
             )
@@ -358,7 +358,7 @@ class AutoriaOperations(AutoriaMain):
                 textprops={'fontsize': 16}
             )
             plt.title(
-                label="Процентное содержание моделей, %",
+                label="Percentage of popular cars, %",
                 fontweight='bold',
                 fontsize=24
             )

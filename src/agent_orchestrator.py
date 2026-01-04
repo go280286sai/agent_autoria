@@ -35,9 +35,9 @@ class AgentOrchestrator:
         """
         response = get_group_predict()
         title = [
-            'Оценка важности признаков',
-            "Оценка корреляции",
-            "Каталог автомобилей"
+            'Feature Importance Assessment',
+            'Correlation Assessment',
+            'Car Catalog'
         ]
         report_ = Report("report_predict")
         for i in range(0, len(response['groups'])):
@@ -58,7 +58,7 @@ class AgentOrchestrator:
         :return:
         """
         response = get_group_models_city(model=self.llm, name=name, city=city)
-        title = f"Аналіз автомобілів {name} у місті {city}"
+        title = f"Car analysis {name} in the {city}"
         return report(
             name="report_group_models_city",
             title=title,
@@ -72,7 +72,7 @@ class AgentOrchestrator:
         :return:
         """
         response = get_group_models_name(model=self.llm, name=name)
-        title = f"Анализ автомобилей {name} в стране"
+        title = f"Car analysis {name} in the country"
         return report(
             name="report_group_models_name",
             title=title,
@@ -86,7 +86,7 @@ class AgentOrchestrator:
         :return:
         """
         response = get_group_year(model=self.llm, year=year)
-        title = f"Анализ автомобилей в стране {year} года"
+        title = f"Car analysis in the country {year} year"
         return report(
             name="report_group_year",
             title=title,
@@ -99,7 +99,7 @@ class AgentOrchestrator:
         :return:
         """
         response = get_group_names(model=self.llm)
-        title = "Анализ автомобилей в Украине"
+        title = "Car analysis in Ukraine"
         return report(
             name="report_group_names",
             title=title,
@@ -112,7 +112,7 @@ class AgentOrchestrator:
         :return:
         """
         response = get_group_years(model=self.llm)
-        title = "Анализ автомобилей в Украине на сегодня"
+        title = "Car analysis in Ukraine today"
         return report(
             name="report_group_years",
             title=title,
@@ -125,7 +125,7 @@ class AgentOrchestrator:
         :return:
         """
         response = get_group_types(model=self.llm)
-        title = "Анализ разных видов топлив для автомобилей в Украине"
+        title = "Analysis of different types of fuel for cars in Ukraine"
         return report(
             name="report_group_types",
             title=title,
@@ -138,7 +138,7 @@ class AgentOrchestrator:
         :return:
         """
         response = get_group_switch(model=self.llm)
-        title = "Анализ разных видов коробок передач для автомобилей в Украине"
+        title = "Analysis of different types of gearboxes for cars in Ukraine"
         return report(
             name="report_group_switch",
             title=title,

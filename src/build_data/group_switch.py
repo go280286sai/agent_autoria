@@ -13,28 +13,26 @@ from src.autoria_learn.autoria_operations import AutoriaOperations
 from src.helps.autoria_exceptions import AutoriaDataZeroException
 logger = logging.getLogger(__name__)
 
-SYSTEM_MESSAGE = ("Дай максимально полный, структурированный "
-                  "и аналитический ответ на русском языке")
+SYSTEM_MESSAGE = ("Please provide the most complete, "
+                  "structured and analytical answer possible.")
 
 TEMPLATE = """
-*switch* – тип коробки передач легкового автомобиля(
-механика, автомат, робот, гибрид и т.д.)
-*count* – количество автомобилей за указанный год выпуска
-*percent* - процентное содержание типов коробок передач
+*switch* – passenger car transmission type (manual, automatic, robotic, hybrid, etc.)
+*count* – number of cars for the specified year of manufacture
+*percent* – percentage of transmission types
 
-Данные объявлений:
+Ad details:
 {groups}
 
-Проанализируй потребление разных вид топлив для автомобиля,
-продаваемые в одной стране Украина.
-Сделай детальный аналитический обзор:
+Analyze the consumption of different types of fuel for automobiles sold in Ukraine.
+Provide a detailed analytical overview:
 
-1. Выдели самые популярные
-2. Выдели редко используемые
-3. Какие виды коробок передач дешевле в обслуживании
-4. Какие виды коробок передач реже ремонтируют
+1. Highlight the most popular
+2. Highlight the least used
+3. Which types of transmissions are cheaper to maintain
+4. Which types of transmissions require less frequent repairs
 
-Ответ оформи в виде связного аналитического текста с логическими абзацами.
+Format your answer as a coherent analytical text with logical paragraphs.
 """
 
 
@@ -49,7 +47,7 @@ def get_group_switch(model: ChatOllama):
         body = ob.get_group_switch()
 
         if body["status"] is False:
-            raise AutoriaDataZeroException("Данные отсутствуют")
+            raise AutoriaDataZeroException("No data")
 
         groups_df = body["data"]["groups"]
         image = body["data"]["image"]

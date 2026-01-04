@@ -1,5 +1,6 @@
 """
 Module predict model, feature importance, correlations
+Author: Cod3W1ld01@proton.me
 """
 # pylint: disable=ungrouped-imports, duplicate-code
 import pandas as pd

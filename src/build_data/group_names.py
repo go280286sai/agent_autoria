@@ -12,28 +12,29 @@ from langchain_core.messages import SystemMessage
 from src.autoria_learn.autoria_operations import AutoriaOperations
 from src.helps.autoria_exceptions import AutoriaDataZeroException
 logger = logging.getLogger(__name__)
-SYSTEM_MESSAGE = ("Дай максимально полный, структурированный "
-                  "и аналитический ответ на русском языке")
+
+SYSTEM_MESSAGE = ("Please provide the most complete, "
+                  "structured and analytical answer possible.")
 
 TEMPLATE = """
-*name* - марка легкового автомобиля
-*max* – максимальная цена автомобиля за указанный год выпуска
-*min* - минимальная цена автомобиля за указанный год выпуска
-*mean* - средняя цена автомобиля за указанный год выпуска
-*count* – количество автомобилей за указанный год выпуска
+*name* - car brand
+*max* - maximum price of the car for the specified year of manufacture
+*min* - minimum price of the car for the specified year of manufacture
+*mean* - average price of the car for the specified year of manufacture
+*count* - number of cars for the specified year of manufacture
 
-Данные объявлений:
+Ad details:
 {groups}
 
-Проанализируй автомобили разных марок, продаваемые в одной стране Украина.
-Сделай детальный аналитический обзор:
+Analyze cars of different brands sold in one country, Ukraine.
+Provide a detailed analytical review:
 
-1. Выдели самые топ 10 продаваемых(ликвидные) моделей
-2. Выдели самые топ 10 плохо продаваемые машины
-3. Какие параметры сильнее всего влияют на цену (*price_usd*)
-4. На что стоит обращать внимание покупателю
+1. Identify the top 10 best-selling (liquid) models.
+2. Identify the top 10 worst-selling cars.
+3. Which parameters most influence price (*price_usd*)?
+4. What should a buyer pay attention to?
 
-Ответ оформи в виде связного аналитического текста с логическими абзацами.
+Format your answer as a coherent analytical text with logical paragraphs.
 """
 
 
@@ -48,7 +49,7 @@ def get_group_names(model: ChatOllama):
         body = ob.get_group_names()
 
         if body["status"] is False:
-            raise AutoriaDataZeroException("Данные отсутствуют")
+            raise AutoriaDataZeroException("No data")
 
         groups_df = body["data"]["groups"]
         image = body["data"]["image"]

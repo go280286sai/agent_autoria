@@ -13,41 +13,40 @@ from src.autoria_learn.autoria_operations import AutoriaOperations
 from src.helps.autoria_exceptions import AutoriaDataZeroException
 logger = logging.getLogger(__name__)
 
-SYSTEM_MESSAGE = ("Дай максимально полный, структурированный "
-                  "и аналитический ответ на русском языке")
+SYSTEM_MESSAGE = ("Please provide the most complete, "
+                  "structured and analytical answer possible.")
 
 TEMPLATE = """
-*name* - марка легкового автомобиля
-*year* - год выпуска автомобиля
-*model* - модель автомобиля
-*city* - город, в котором продается автомобиль
-*switch_resource* - коробка передач или ресурс аккумулятора для электромобиля
-*switch* - тип коробки передач (механика, автомат, робот, электро)
-*resource* - ресурс аккумулятора
-*type_fuel* - тип топлива (дизель, бензин, электро)
-*volume* - объем двигателя (л)
-*capacity* - емкость аккумулятора
-*accident* - был ли автомобиль в ДТП
-*distance* - пробег, тыс. км
-*short_description* - краткое описание
-*price_usd* - цена в USD
-*price_hrn* - цена в гривнах
-*context* - дополнительные параметры
-*description* - описание от продавца
+*name* - Car brand
+*year* - Year of vehicle manufacture
+*model* - Vehicle model
+*city* - City where the vehicle is sold
+*switch_resource* - Gearbox or battery life for an electric vehicle
+*switch* - Gearbox type (manual, automatic, robotic, electric)
+*resource* - Battery life
+*type_fuel* - Fuel type (diesel, gasoline, electric)
+*volume* - Engine displacement (liters)
+*capacity* - Battery capacity
+*accident* - Whether the vehicle has been in an accident
+*distance* - Mileage (in thousands of kilometers)
+*short_description* - Short description
+*price_usd* - Price in USD
+*price_hrn* - Price in UAH
+*context* - Additional parameters
+*description* - Seller's description
 
-Данные объявлений:
+Ad details:
 {groups}
 
-Проанализируй автомобили за указанный год, продаваемые в одной стране Украина.
-Сделай детальный аналитический обзор:
+Analyze cars sold in a single country, Ukraine, for a specified year. Provide a detailed analytical review:
 
-1. Общие характеристики моделей
-2. Типичные особенности комплектаций
-3. Что чаще всего упоминается в *context* и *description*
-4. Какие параметры сильнее всего влияют на цену (*price_usd*)
-5. На что стоит обращать внимание покупателю
+1. General characteristics of the models
+2. Typical features of the trim levels
+3. What is most often mentioned in *context* and *description*
+4. Which parameters most influence the price (*price_usd*)
+5. What should a buyer pay attention to?
 
-Ответ оформи в виде связного аналитического текста с логическими абзацами.
+Format your answer as a coherent analytical text with logical paragraphs.
 """
 
 
@@ -63,7 +62,7 @@ def get_group_year(model: ChatOllama, year: int):
         body = ob.get_group_year(year=year)
 
         if body["status"] is False:
-            raise AutoriaDataZeroException("Данные отсутствуют")
+            raise AutoriaDataZeroException("No data")
 
         groups_df = body["data"]["groups"]
         image = body["data"]["image"]

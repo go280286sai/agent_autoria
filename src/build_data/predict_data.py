@@ -20,13 +20,13 @@ def get_group_predict():
         # Get important
         body = ob.get_importance()
         if body["status"] is False:
-            raise AutoriaDataZeroException("Данные отсутствуют")
+            raise AutoriaDataZeroException("No data")
         groups_df = [body["data"]["groups"]]
         images = [body["data"]["image"]]
         # Get corr
         corr = ob.get_corr()
         if corr["status"] is False:
-            raise AutoriaDataZeroException("Данные отсутствуют")
+            raise AutoriaDataZeroException("No data")
         groups_df.append(corr["data"]["groups"])
         images.append(corr["data"]["image"])
         # Get catalogs

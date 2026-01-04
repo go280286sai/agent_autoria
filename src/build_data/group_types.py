@@ -12,30 +12,30 @@ from langchain_core.messages import SystemMessage
 from src.autoria_learn.autoria_operations import AutoriaOperations
 from src.helps.autoria_exceptions import AutoriaDataZeroException
 logger = logging.getLogger(__name__)
-SYSTEM_MESSAGE = ("Дай максимально полный, структурированный "
-                  "и аналитический ответ на русском языке")
+SYSTEM_MESSAGE = ("Please provide the most complete, "
+                  "structured and analytical answer possible.")
 
 TEMPLATE = """
-*type* – вид потребления топлива/энергии(
-бензин, дизель, газ/бензин, электро и т.д.)
-*max* – максимальная цена автомобиля за указанный год выпуска
-*min* - минимальная цена автомобиля за указанный год выпуска
-*mean* - средняя цена автомобиля за указанный год выпуска
-*count* – количество автомобилей за указанный год выпуска
+*type* – fuel/energy consumption type (
+gasoline, diesel, gas/petrol, electric, etc.)
+*max* – maximum vehicle price for the specified year of manufacture
+*min* – minimum vehicle price for the specified year of manufacture
+*mean* – average vehicle price for the specified year of manufacture
+*count* – number of vehicles for the specified year of manufacture
 
-Данные объявлений:
+Ad data:
 {groups}
 
-Проанализируй потребление разных вид топлив для автомобиля,
-продаваемые в одной стране Украина.
-Сделай детальный аналитический обзор:
+Analyze the consumption of different types of fuel for vehicles
+sold in one country, Ukraine.
+Provide a detailed analytical review:
 
-1. Выдели самые популярные
-2. Выдели редко используемые
-3. Какие виды топлив дешевле
-4. Какие виды топлив подливают время жизни двигателя
+1. Highlight the most popular
+2. Highlight the rarely used
+3. Which types of fuel are cheaper
+4. Which types of fuel increase engine life
 
-Ответ оформи в виде связного аналитического текста с логическими абзацами.
+Format your answer as a coherent analytical text with logical paragraphs.
 """
 
 
@@ -50,7 +50,7 @@ def get_group_types(model: ChatOllama) -> dict:
         body = ob.get_group_types()
 
         if body["status"] is False:
-            raise AutoriaDataZeroException("Данные отсутствуют")
+            raise AutoriaDataZeroException("No data")
 
         groups_df = body["data"]["groups"]
         image = body["data"]["image"]

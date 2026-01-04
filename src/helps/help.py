@@ -54,7 +54,7 @@ def get_type_fuel(txt: str) -> tuple[str, float, float]:
         if " л" in text[0]:
             a = float(text[0].split()[0])
             b = 0.0
-            c = "Не вказано"
+            c = "Not specified"
         else:
             a = 0.0
             b = 0.0
@@ -79,8 +79,8 @@ def get_accident(arr: list[str]) -> str:
     acc = arr.copy()
     for el in acc:
         if "Був в ДТП" in el:
-            return "Був в ДТП"
-    return "Не був в ДТП"
+            return "Was in a traffic accident"
+    return "Was not in an accident"
 
 
 def get_distance(txt: str) -> float:
@@ -135,7 +135,7 @@ def report(
             )
 
         else:
-            raise TypeError("data должен быть list или dict")
+            raise TypeError("data must be list or dict")
 
         report_.build_report()
         return f"data/out/{name}.pdf"

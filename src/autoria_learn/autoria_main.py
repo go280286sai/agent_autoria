@@ -1,6 +1,6 @@
 """
 Main file for Autoria learn
-author: Cod3W1ld01@proton.me
+Author: Cod3W1ld01@proton.me
 """
 # pylint: disable=too-few-public-methods
 import pandas as pd

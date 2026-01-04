@@ -1,6 +1,6 @@
 """
 Scraping site auto.ria.com
-author: Cod3W1ld01@proton.me
+Author: Cod3W1ld01@proton.me
 """
 import os
 import scrapy
