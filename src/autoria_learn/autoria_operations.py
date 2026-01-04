@@ -10,7 +10,7 @@ from src.helps.autoria_exceptions import (AutoriaDataZeroException,
                                           AutoriaDataColumnException)
 from src.autoria_learn.autoria_main import AutoriaMain
 from src.helps.help import get_sort_count, get_percent
-matplotlib.use("TkAgg")
+matplotlib.use("Agg")
 
 
 class AutoriaOperations(AutoriaMain):
