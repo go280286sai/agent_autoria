@@ -38,7 +38,8 @@ TEMPLATE = """
 Ad details:
 {groups}
 
-Analyze cars sold in a single country, Ukraine, for a specified year. Provide a detailed analytical review:
+Analyze cars sold in a single country, Ukraine, for a
+specified year. Provide a detailed analytical review:
 
 1. General characteristics of the models
 2. Typical features of the trim levels

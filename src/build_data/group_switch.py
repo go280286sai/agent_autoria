@@ -17,14 +17,16 @@ SYSTEM_MESSAGE = ("Please provide the most complete, "
                   "structured and analytical answer possible.")
 
 TEMPLATE = """
-*switch* – passenger car transmission type (manual, automatic, robotic, hybrid, etc.)
+*switch* – passenger car transmission type (manual, automatic,
+robotic, hybrid, etc.)
 *count* – number of cars for the specified year of manufacture
 *percent* – percentage of transmission types
 
 Ad details:
 {groups}
 
-Analyze the consumption of different types of fuel for automobiles sold in Ukraine.
+Analyze the consumption of different types of fuel for
+automobiles sold in Ukraine.
 Provide a detailed analytical overview:
 
 1. Highlight the most popular
