@@ -52,7 +52,7 @@ class AgentOrchestrator:
 
     def agent_get_group_models_city(self, name: str, city: str) -> str | None:
         """
-        Method  get group_models city
+        Method  get group models in the city
         :param name:
         :param city:
         :return:

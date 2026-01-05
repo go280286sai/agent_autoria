@@ -45,7 +45,7 @@ class ScrapingAgentService:
                                           city: str
                                           ) -> Dict[str, Any]:
         """
-        Generate report groups models for city
+        Generate report groups models in the city
         :param name:
         :param city:
         :return:
